@@ -48,6 +48,7 @@ module.exports = {
         try{
             const sheduleBusca = await Shedule.findById(_id);
             return response.send({sheduleBusca});
+            
         } catch(error){
             return response.status(400).send({error: 'Shedule not found'})
         }
@@ -91,6 +92,7 @@ module.exports = {
                 await Shedule.findByIdAndRemove(_id);
                 await Store.findByIdAndUpdate({_id: shedule.store}, {shedule: null}, {new: true})
                 return response.send({error: false, message: 'Shedule deleted'}) 
+
             } else {
                 return response.status(400).send({error: 'Shedule not found'}) 
             }

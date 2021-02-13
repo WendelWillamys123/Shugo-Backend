@@ -59,24 +59,24 @@ module.exports = {
         const {idProduct, name, description, value} = request.body; 
         
         try{
-        let product = await Product.findById(idProduct); 
+            let product = await Product.findById(idProduct); 
 
-        if(product){ 
+            if(product){ 
 
-        if(product.name !== name){
-            product.name = name;
-        }
+                if(product.name !== name){
+                    product.name = name;
+                }
 
-        if(product.description !== description){
-            product.description = description;
-        }
+                if(product.description !== description){
+                    product.description = description;
+                }
 
-        if(product.value !== value){
-            product.value = value;
-        }
+                if(product.value !== value){
+                    product.value = value;
+                }
 
-        await Product.findByIdAndUpdate({_id: idProduct}, {name: product.name, description: product.description, value: product.value}, {new: true})
-        return response.send({product}); 
+                await Product.findByIdAndUpdate({_id: idProduct}, {name: product.name, description: product.description, value: product.value}, {new: true})
+                return response.send({product}); 
 
         } else {
             return response.status(400).send({error: 'Product not found'}) 

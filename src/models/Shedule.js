@@ -7,12 +7,10 @@ const SheduleSchema = new mongoose.Schema({
             start: {
                 hours: Number,
                 minutes: Number,
-                require: true
             },
             end: {
                 hours: Number,
                 minutes: Number,
-                require: true
             },
 
             index: Number,
