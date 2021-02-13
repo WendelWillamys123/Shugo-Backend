@@ -57,7 +57,7 @@ const router = Router();
             if(!store){
                 return response.status(400).send({error: 'Store not found'})
             } 
-            if(!await bcrypt.compare(password, store.password)){
+            if(!await bcrypt.compare(password, store.password)){    
                 return response.status(400).send({error: 'Invalid password'})
             }
 

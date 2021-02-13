@@ -53,7 +53,20 @@ const StoreSchema = new mongoose.Schema ({
             type: String,
             require: false,
             default: 0,
-        }
+        },
+
+    products: [{
+            type: mongoose.Schema.Types.ObjectId,
+            ref: 'Product',
+            default: null
+        }],
+
+    shedule: {
+            type: mongoose.Schema.Types.ObjectId,
+            ref: 'Shedule',
+            default: null
+        },
+
 
     }
     

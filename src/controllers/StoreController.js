@@ -24,6 +24,17 @@ module.exports = {
         }
     },
 
+    async showName(request, response) {
+        const { name } = request.headers;
+
+        try{
+            const storeBusca = await Store.find({name: name});
+            return response.send({storeBusca});
+        } catch(error){
+            return response.status(400).send({error: 'Store not found'})
+        }
+    },
+
     async update(request, response) {
         const {_id, name, email, slogan, description, CPF_CNPJ, address, phone, category} = request.body; 
         
