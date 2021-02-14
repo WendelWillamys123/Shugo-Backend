@@ -6,7 +6,7 @@ module.exports = {
     async index(request, response) {    
         try {
             const users = await User.find();
-            return response.send({users})
+            return response.send(users)
 
         } catch (error) {
             return response.status(400).send({error: 'Users not found'});
@@ -18,7 +18,7 @@ module.exports = {
 
         try{
             const userBusca = await User.findById(_id);
-            return response.send({userBusca});
+            return response.send(userBusca);
         } catch(error){
             return response.status(400).send({error: 'User not found'})
         }
@@ -41,7 +41,7 @@ module.exports = {
         }
 
         await User.findByIdAndUpdate({_id: idUser}, {name: user.name, email: user.email}, {new: true})
-        return response.send({user}); 
+        return response.send(user); 
 
         } else {
             return response.status(400).send({error: 'User not found'}) 

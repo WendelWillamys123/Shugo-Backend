@@ -6,7 +6,7 @@ module.exports = {
     async index(request, response) {    
         try {
             const stores = await Store.find();
-            return response.send({stores})
+            return response.send(stores)
 
         } catch (error) {
             return response.status(400).send({error: 'Stores not found'});
@@ -18,7 +18,7 @@ module.exports = {
 
         try{
             const storeBusca = await Store.findById(_id);
-            return response.send({storeBusca});
+            return response.send(storeBusca);
         } catch(error){
             return response.status(400).send({error: 'Store not found'})
         }
@@ -29,7 +29,7 @@ module.exports = {
 
         try{
             const storeBusca = await Store.find({name: name});
-            return response.send({storeBusca});
+            return response.send(storeBusca);
         } catch(error){
             return response.status(400).send({error: 'Store not found'})
         }
@@ -77,7 +77,7 @@ module.exports = {
 
             await Store.findByIdAndUpdate({_id: _id}, {name : store.name, email : store.email, slogan : store.slogan, description : store.description,
             CPF_CNPJ : store.CPF_CNPJ, address : store.address, phone : store.phone, category : store.category}, {new: true})
-            return response.send({store}); 
+            return response.send(store); 
 
         } else {
             return response.status(400).send({error: 'Store not found'}) 
